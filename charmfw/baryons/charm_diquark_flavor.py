@@ -12,10 +12,10 @@ import pandas as pd
 # framework includes
 from charmfw.baryons import data_preparation as dp
 from decays.decay_width import DecayWidths
-from charmfw.baryons import bottom_states as bs
+from charmfw.baryons import charm_states as cs
 
 
-class BottomDiquark:
+class CharmDiquark:
     """
     Class that computes the mass and decay widths of three-quark heavy baryons.
     """    
@@ -192,7 +192,7 @@ class BottomDiquark:
         Load the quantum parameters that multiply the A,B,E,G in Hamiltonian
         """
         # get the original quantum numbers and experimental data
-        state,sum_mass,J_tot,S_tot,L_tot,I_tot,SU_tot,HO_n,SL,ModEx = bs.states_mass_diquark(baryons)
+        state,sum_mass,J_tot,S_tot,L_tot,I_tot,SU_tot,HO_n,SL,ModEx = cs.states_mass_diquark(baryons)
         # get the hamiltonian factors based on the quatum numbers
         param_v, param_q1, param_q2, param_q3, param_is_rho, param_is_lam,\
             param_is_omega, param_is_cascade_p, param_is_sigma, param_is_lambda, param_is_cascade,\

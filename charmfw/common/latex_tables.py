@@ -42,4 +42,4 @@ def decay_table_channels(baryons, channel_widths, sym_errors, up_errors, dn_erro
         du.print_row_latex(state_name=str(i+1), state_decays=channel_widths[i],
                            errors_up=error_up, errors_dn=error_dn, f_out=f_out)
         
-    du.print_bottom_latex(baryons,f_out)
+    du.print_charm_latex(baryons,f_out)

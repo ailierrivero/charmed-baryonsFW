@@ -632,7 +632,7 @@ class ElectroWidths:
         # decay to omegas
         self.omega_1_decay = 2.709   # 0 ground
         self.omega_2_decay = 2.778   # 0 ground
-        self.omega_3_decay = 3.008   # 0 2p1/2-lam 
+        self.omega_3_decay = 3.008   # 0 2p1/2-lam
         self.omega_4_decay = 3.050   # 0 4p1/2-lam
         self.omega_5_decay = 3.035   # 0 2p3/2-lam
         self.omega_6_decay = 3.077   # 0 4p3/2-lam

@@ -18,7 +18,7 @@ import pandas as pd
 from charmfw.common import data_utils as du
 
 
-class BottomTables:
+class CharmTables:
     """
     Class to produce latex tables containing mass and decay widths
     """
@@ -35,9 +35,9 @@ class BottomTables:
         if not os.path.exists(self.m_workpath+"/tables/"):
             os.mkdir(self.m_workpath+"/tables/")
         f_paper = open(self.m_workpath+'/tables/masses_'+self.m_baryons+'_paper.tex', "w")
-        print("\\begin{tabular}{c | c c c c }\hline \hline ", file=f_paper)
-        print(" State     & Predicted Mass   & Experimental Mass & Predicted Width & Experimental Width   \\\ ", file=f_paper)
-        print("           &      (MeV)       &    (MeV)          &      (MeV)      & $\Gamma_{tot}$ (MeV) \\\ \hline", file=f_paper)
+        print(r"\\begin{tabular}{c | c c c c }\hline \hline ", file=f_paper)
+        print(r" State     & Predicted Mass   & Experimental Mass & Predicted Width & Experimental Width   \\\ ", file=f_paper)
+        print(r"           &      (MeV)       &    (MeV)          &      (MeV)      & $\Gamma_{tot}$ (MeV) \\\ \hline", file=f_paper)
 
         for i in range(len(self.m_mass)):
 
@@ -49,14 +49,14 @@ class BottomTables:
             exp_mass_val,exp_mass_err_val= du.exp_mass_val(self.m_baryons,  self.m_J_tot[i], self.m_S_tot[i], self.m_L_tot[i], self.m_ModEx[i], SU_tot_val)
 
             print(quantum_state,'$',round(self.m_mass[i]),'^{+',round(self.m_error_up[i]),'}_{-',round(self.m_error_dn[i]),'}$',  '& ', exp_mass, ' & $',
-                  round(self.m_decay[i], 1),'^{+', round(self.m_decay_up[i], 1),'}_{-', round(self.m_decay_dn[i], 1),'}$', ' &', exp_width, '\\\ ', file=f_paper)
+                  round(self.m_decay[i], 1),'^{+', round(self.m_decay_up[i], 1),'}_{-', round(self.m_decay_dn[i], 1),'}$', ' &', exp_width, '\\\\ ', file=f_paper)
 
         name = self.m_baryons
         label = 'three_quark'
-        print('\hline \hline', file=f_paper)
-        print('\end{tabular}', file=f_paper)
-        print("\caption{Every quantity is in MeV, except for percentage differences. States: $", self.m_baryons, "$}",file=f_paper)
-        print("\label{tab:"+name+"_mass_"+label+"}", file=f_paper)
+        print(r'\hline \hline', file=f_paper)
+        print(r'\end{tabular}', file=f_paper)
+        print(r"\caption{Every quantity is in MeV, except for percentage differences. States: $", self.m_baryons, "$}",file=f_paper)
+        print(r"\label{tab:"+name+"_mass_"+label+"}", file=f_paper)
 
         
     def combined_model_table(self):
@@ -69,10 +69,10 @@ class BottomTables:
         baryon_name = du.baryon_name(self.m_baryons)
         flavor_name = du.flavor_label(self.m_baryons)
         
-        print("\\begin{tabular}{c| c c c c c c c}\hline \hline", file=f_paper)
-        print(flavor_name+ " & \multicolumn{2}{c}{Three-quark} &  \multicolumn{2}{c}{Quark-diquark}   &    &  Three-quark  &\\\ ", file=f_paper)
-        print(baryon_name+" &   & Predicted  &   &  Predicted   &  Experimental &  Predicted            & Experimental \\\ ", file=f_paper)
-        print(" $^{2S+1}L_{J}$ & $\\vert l_{\\lambda}, l_{\\rho}, k_{\\lambda}, k_{\\rho} \\rangle$ & Mass (MeV)  & $\\vert l_{r}, k_{r} \\rangle$  &  Mass (MeV)   &  Mass (MeV)   &  $\Gamma_{tot}$ (MeV) & $\Gamma$ (MeV) \\\ \hline", file=f_paper)
+        print(r"\\begin{tabular}{c| c c c c c c c}\hline \hline", file=f_paper)
+        print(flavor_name+ r" & \multicolumn{2}{c}{Three-quark} &  \multicolumn{2}{c}{Quark-diquark}   &    &  Three-quark  &\\\ ", file=f_paper)
+        print(baryon_name+r" &   & Predicted  &   &  Predicted   &  Experimental &  Predicted            & Experimental \\\ ", file=f_paper)
+        print(r" $^{2S+1}L_{J}$ & $\\vert l_{\\lambda}, l_{\\rho}, k_{\\lambda}, k_{\\rho} \\rangle$ & Mass (MeV)  & $\\vert l_{r}, k_{r} \\rangle$  &  Mass (MeV)   &  Mass (MeV)   &  $\Gamma_{tot}$ (MeV) & $\Gamma$ (MeV) \\\ \hline", file=f_paper)
 
         s_wave_count,p_wave_count,d_wave_count=0,0,0
         for i in range(len(self.m_mass)):
@@ -80,18 +80,18 @@ class BottomTables:
             if self.m_HO_n[i] == 0:                
                 if s_wave_count==0:
                     s_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=0$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=0$  &  &  &  &  &  \\\ ", file=f_paper)
             elif self.m_HO_n[i] == 1:
                 if p_wave_count==0:
                     p_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=1$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=1$  &  &  &  &  &  \\\ ", file=f_paper)
             elif self.m_HO_n[i] == 2:
                 if d_wave_count==0:
                     d_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=2$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=2$  &  &  &  &  &  \\\ ", file=f_paper)
 
             if self.m_SU_tot[i] > 3 and self.m_SU_tot[i] < 3.5 : SU_tot_val = 10/3 # horrible bug fix
             else: SU_tot_val = 4/3
@@ -114,15 +114,15 @@ class BottomTables:
                     mass_di_lat = '$'+str(abs(round(self.m_mass_di[j])))+'^{+'+str(abs(round(self.m_error_up_di[j])))+'}_{-'+str(abs(round(self.m_error_dn_di[j])))+'}$'
                     break
         
-            print( wave_label,'&' ,quantum_state, mass_lat,'&'  ,quantum_state_di, mass_di_lat, '&' ,exp_mass, '&', decay_lat,'&', exp_width, '\\\ ', file=f_paper)
+            print( wave_label,'&' ,quantum_state, mass_lat,'&'  ,quantum_state_di, mass_di_lat, '&' ,exp_mass, '&', decay_lat,'&', exp_width, '\\\\ ', file=f_paper)
         
     
         name = self.m_baryons
         label = 'three_di_quark'
-        print('\hline \hline', file=f_paper)
-        print('\end{tabular}', file=f_paper)
-        #print("\caption{Every quantity is in MeV, except for percentage differences. States: $", baryons, "$}",file=f_paper)
-        #print("\label{tab:"+name+"_mass_"+label+"}", file=f_paper)
+        print(r'\hline \hline', file=f_paper)
+        print(r'\end{tabular}', file=f_paper)
+        #print(r"\caption{Every quantity is in MeV, except for percentage differences. States: $", baryons, "$}",file=f_paper)
+        #print(r"\label{tab:"+name+"_mass_"+label+"}", file=f_paper)
         f_paper.close()
         
 
@@ -137,9 +137,9 @@ class BottomTables:
         flavor_name = du.flavor_label(self.m_baryons)
         self.m_load_data_compare(self.m_baryons)
         
-        print("\\begin{tabular}{c c| c c c c c c c}\hline \hline", file=f_paper)
-        print(baryon_name+ "& "  +flavor_name+  "& This work   &   NRQM \cite{Yoshida2015}     &  QCD sum rules \cite{Liu2008, Mao2015, Chen2016}      &  NRQM \cite{Roberts2008}    & $\chi$QM \cite{Kim2021}        & LQCD \cite{Mohanta2020}     & Experimental  \\\ ", file=f_paper)
-        print(" $\\vert l_{\\lambda}, l_{\\rho}, k_{\\lambda}, k_{\\rho} \\rangle$ & $^{2S+1}L_{J}$ & mass (MeV)  &   mass (MeV)  &  mass (MeV)  &  mass (MeV) & mass (MeV) & mass (MeV) &      mass (MeV) \\\ \hline", file=f_paper)
+        print(r"\\begin{tabular}{c c| c c c c c c c}\hline \hline", file=f_paper)
+        print(baryon_name+ "& "  +flavor_name+  r"& This work   &   NRQM \cite{Yoshida2015}     &  QCD sum rules \cite{Liu2008, Mao2015, Chen2016}      &  NRQM \cite{Roberts2008}    & $\chi$QM \cite{Kim2021}        & LQCD \cite{Mohanta2020}     & Experimental  \\\ ", file=f_paper)
+        print(r" $\\vert l_{\\lambda}, l_{\\rho}, k_{\\lambda}, k_{\\rho} \\rangle$ & $^{2S+1}L_{J}$ & mass (MeV)  &   mass (MeV)  &  mass (MeV)  &  mass (MeV) & mass (MeV) & mass (MeV) &      mass (MeV) \\\ \hline", file=f_paper)
 
         s_wave_count,p_wave_count,d_wave_count=0,0,0
         for i in range(len(self.m_mass)):
@@ -147,18 +147,18 @@ class BottomTables:
             if self.m_HO_n[i] == 0:                
                 if s_wave_count==0:
                     s_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=0$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=0$  &  &  &  &  &  \\\ ", file=f_paper)
             elif self.m_HO_n[i] == 1:
                 if p_wave_count==0:
                     p_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=1$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=1$  &  &  &  &  &  \\\ ", file=f_paper)
             elif self.m_HO_n[i] == 2:
                 if d_wave_count==0:
                     d_wave_count+=1
-                    print('\hline', file=f_paper)
-                    print(" $N=2$  &  &  &  &  &  \\\ ", file=f_paper)
+                    print(r'\hline', file=f_paper)
+                    print(r" $N=2$  &  &  &  &  &  \\\ ", file=f_paper)
 
             if self.m_SU_tot[i] > 3 and self.m_SU_tot[i] < 3.5 : SU_tot_val = 10/3 # horrible fix
             else: SU_tot_val = 4/3
@@ -174,10 +174,10 @@ class BottomTables:
             mass_kim_latex = du.compare_mass_latex(self.m_mass_kim[i])
             mass_mon_latex = du.compare_mass_latex(self.m_mass_mon[i])
             
-            print(quantum_state, wave_label,'&', mass_our_latex, '&', mass_ysh_latex,'&', mass_hsk_latex, '&', mass_rob_latex,'&', mass_kim_latex, '&', mass_mon_latex,'&', mass_exp_latex, '\\\ ', file=f_paper)
+            print(quantum_state, wave_label,'&', mass_our_latex, '&', mass_ysh_latex,'&', mass_hsk_latex, '&', mass_rob_latex,'&', mass_kim_latex, '&', mass_mon_latex,'&', mass_exp_latex, '\\\\ ', file=f_paper)
         
-        print('\hline \hline', file=f_paper)
-        print('\end{tabular}', file=f_paper)
+        print(r'\hline \hline', file=f_paper)
+        print(r'\end{tabular}', file=f_paper)
         f_paper.close()
 
         
@@ -196,7 +196,7 @@ class BottomTables:
 
         from decays import decay_utils as dec
         baryon_symbol = dec.baryon_symbol(baryons)
-        baryon_quarks = "$" + baryon_symbol + "_b(" + dec.baryon_quarks(baryons) + ")$"
+        baryon_quarks = "$" + baryon_symbol + "_c(" + dec.baryon_quarks(baryons) + ")$"
 
         name_header=[]
         name_decays=[]
@@ -238,24 +238,24 @@ class BottomTables:
             if self.m_HO_n[i] == 0:                
                 if s_wave_count==0:
                     s_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
             elif self.m_HO_n[i] == 1:
                 if p_wave_count==0:
                     p_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
             elif self.m_HO_n[i] == 2:
                 if d_wave_count==0:
                     d_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
                     
             mass_lat = str(abs(round(self.m_mass[i])))
             wave_label =  quantum_state + du.wave_label(self.m_S_tot[i], self.m_J_tot[i], self.m_L_tot[i]) + '&' +  mass_lat + '&'
             dec.print_row_latex(self.m_mass[i], mass_decs_B, mass_decs_C, wave_label, channel_widths, errors_up, errors_dn, f_decay_indi)
 
-        dec.print_bottom_latex(baryons, f_decay_indi)
+        dec.print_charm_latex(baryons, f_decay_indi)
 
 
     def decay_indi_table_em(self, compare=False):
@@ -267,7 +267,7 @@ class BottomTables:
             df_compare = pd.read_csv(self.m_workpath+'/tables/cqm_decays_indi_em_'+self.m_baryons+'_summary.csv')
             
         f_decay_indi = open(self.m_workpath+'/tables/decay_indi_em_'+self.m_baryons+'_paper.tex', "w")
-        n_decay_channels = int((len(df.columns)-8)/3)
+        n_decay_channels = int((len(df.columns)-9)/3)
         baryons = self.m_baryons
 
         flavor = "$\\mathcal{F}={\\bf {6}}_{\\rm f}$ " # omegas, sigmas, cascades
@@ -276,7 +276,7 @@ class BottomTables:
 
         from decays import decay_utils_em as dec
         baryon_symbol = dec.baryon_symbol(baryons)
-        baryon_quarks = "$" + baryon_symbol + "_b(" + dec.baryon_quarks(baryons) + ")$"
+        baryon_quarks = "$" + baryon_symbol + "_c(" + dec.baryon_quarks(baryons) + ")$"
 
         name_header=[]
         name_decays=[]
@@ -290,8 +290,8 @@ class BottomTables:
         name_decays.append("mass (MeV)")
         for k in range(n_decay_channels):
             name_header.append(" ")
-            name_decays.append(dec.latex_decay_label(baryons, k+1)[0])
-            mass_decs_B.append(dec.latex_decay_label(baryons, k+1)[1])
+            name_decays.append(dec.latex_decay_label(baryons, k+1, charge)[0])
+            mass_decs_B.append(dec.latex_decay_label(baryons, k+1, charge)[1])
             if not compare:
                 coulmn_sep += "&"
             else:
@@ -305,6 +305,7 @@ class BottomTables:
             n_states = 9 # we only have up to P-wave  CHECK!!
         else:
             n_states = 8 # we only have up to P-wave  CHECK!!
+            n_states = 27 # we only have up to D-wave  CHECK!!
 
         s_wave_count,p_wave_count,d_wave_count=0,0,0
         for i in range(n_states):
@@ -327,34 +328,45 @@ class BottomTables:
             if self.m_HO_n[i] == 0:                
                 if s_wave_count==0:
                     s_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
             elif self.m_HO_n[i] == 1:
                 if p_wave_count==0:
                     p_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
             elif self.m_HO_n[i] == 2:
                 if d_wave_count==0:
                     d_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
 
             mass_lat = str(abs(round(self.m_mass[i])))
             wave_label =  quantum_state + du.wave_label(self.m_S_tot[i], self.m_J_tot[i], self.m_L_tot[i]) + '&' +  mass_lat + '&'
             dec.print_row_latex(compare, self.m_mass[i], mass_decs_B, wave_label, channel_widths, errors_up, errors_dn, channel_widths_cqm, f_decay_indi)
 
-        dec.print_bottom_latex(baryons, f_decay_indi)
+        dec.print_charm_latex(baryons, f_decay_indi)
 
 
-    def decay_indi_table_em_err(self, compare=False):
+    def decay_indi_table_em_err(self, compare=False,  charge=None, n_states=0, off_set=0):
         """
         Method to save a latex table for individual strong decays with errors
         """
-        df = pd.read_csv(self.m_workpath+'/tables/decays_indi_em_'+self.m_baryons+'_summary.csv')    
-        f_decay_indi = open(self.m_workpath+'/tables/decay_indi_em_err_'+self.m_baryons+'_paper.tex', "w")
+        if charge is None or charge=="":
+            charged_name = ""
+        elif charge == "negative":
+            charged_name = "_negative"
+        elif charge == "positive":
+            charged_name = "_positive"
+        elif charge == "zero":
+            charged_name = "_zero"
+        elif charge == "charged":
+            charged_name = "_charged"
+        
+        df = pd.read_csv(self.m_workpath+'/tables/decays_indi_em_'+self.m_baryons+charged_name+'_summary.csv')
+        f_decay_indi = open(self.m_workpath+'/tables/decay_indi_em_err_'+ self.m_baryons + charged_name + '_paper.tex', "w")
 
-        n_decay_channels = int((len(df.columns)-8)/3)
+        n_decay_channels = int((len(df.columns)-9)/3)
         baryons = self.m_baryons
 
         flavor = "$\\mathcal{F}={\\bf {6}}_{\\rm f}$ " # omegas, sigmas, cascades
@@ -363,7 +375,7 @@ class BottomTables:
 
         from decays import decay_utils_em as dec
         baryon_symbol = dec.baryon_symbol(baryons)
-        baryon_quarks = "$" + baryon_symbol + "_b(" + dec.baryon_quarks(baryons) + ")$"
+        baryon_quarks = "$" + baryon_symbol + "_c(" + dec.baryon_quarks(baryons) + ")$"
 
         name_header=[]
         name_decays=[]
@@ -375,22 +387,22 @@ class BottomTables:
         name_header.append(" ")
         
         name_decays.append(baryon_quarks)
-        name_decays.append("$\mathbf{J^P}$")
+        name_decays.append("$\\mathbf{J^P}$")
         name_decays.append("$\\vert l_{\\lambda}, l_{\\rho}, k_{\\lambda}, k_{\\rho} \\rangle$")
         name_decays.append("$^{2S+1}L_{J}$")
 
         for k in range(n_decay_channels):
-            name_decays.append("KeV")
-            name_header.append(dec.latex_decay_label(baryons, k+1)[0])
-            mass_decs_B.append(dec.latex_decay_label(baryons, k+1)[1])
+            name_decays.append(dec.notation_spect(baryons, k+1, charge))
+            name_header.append(dec.latex_decay_label(baryons, k+1, charge)[0])
+            mass_decs_B.append(dec.latex_decay_label(baryons, k+1, charge)[1])
             coulmn_sep += "&"
 
         dec.print_header_latex(name_header, name_decays, compare, f_decay_indi)
         
-        if baryons == "omegas" or baryons=="sigmas" or baryons=="cascades":            
-            n_states = 9 # we only have up to P-wave  CHECK!!
-        else:
-            n_states = 8 # we only have up to P-wave  CHECK!!
+        #if baryons == "omegas" or baryons=="sigmas" or baryons=="cascades":            
+         #   n_states = 9 # we only have up to P-wave  CHECK!!
+        #else:
+         #   n_states = 8 # we only have up to P-wave  CHECK!!
 
         s_wave_count,p_wave_count,d_wave_count=0,0,0
         for i in range(n_states):
@@ -403,30 +415,32 @@ class BottomTables:
                 errors_up.append(df['dec_up_'+str(k)][i])
                 errors_dn.append(df['dec_dn_'+str(k)][i])
 
-            if self.m_SU_tot[i] > 3 and self.m_SU_tot[i] < 3.5 : SU_tot_val = 10/3
+            
+
+            if self.m_SU_tot[i+off_set] > 3 and self.m_SU_tot[i+off_set] < 3.5 : SU_tot_val = 10/3
             else: SU_tot_val = 4/3
-            quantum_state = du.name_quantum_state(self.m_baryons, self.m_J_tot[i],
-                                                  self.m_S_tot[i], self.m_L_tot[i],
-                                                  self.m_ModEx[i], SU_tot_val)
-            if self.m_HO_n[i] == 0:                
+            quantum_state = du.name_quantum_state(self.m_baryons, self.m_J_tot[i+off_set],
+                                                  self.m_S_tot[i+off_set], self.m_L_tot[i+off_set],
+                                                  self.m_ModEx[i+off_set], SU_tot_val)
+            if self.m_HO_n[i+off_set] == 0:                
                 if s_wave_count==0:
                     s_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
-            elif self.m_HO_n[i] == 1:
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=0$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+            elif self.m_HO_n[i+off_set] == 1:
                 if p_wave_count==0:
                     p_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
-            elif self.m_HO_n[i] == 2:
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=1$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+            elif self.m_HO_n[i+off_set] == 2:
                 if d_wave_count==0:
                     d_wave_count+=1
-                    print('\hline', file=f_decay_indi)
-                    print(" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
+                    print(r'\hline', file=f_decay_indi)
+                    print(r" $N=2$  &  &  &  &  &  \\\ ", file=f_decay_indi)
 
-            mass_lat = str(abs(round(self.m_mass[i])))
+            mass_lat = str(abs(round(self.m_mass[i+off_set])))
             
-            parity = str(np.power(-1.0, self.m_L_tot[i]))
+            parity = str(np.power(-1.0, self.m_L_tot[i+off_set]))
             j_frac = "\\frac{1}{2}"
             if self.m_J_tot[i] == 1.5:
                 j_frac = "\\frac{3}{2}"
@@ -440,10 +454,10 @@ class BottomTables:
                 parity = "+"
                                 
             JP = "$ \\mathbf{" + j_frac + "^" + parity +"}$"
-            wave_label= "$"+baryon_symbol+'_b('+str(abs(round(self.m_mass[i])))+')$  & ' + JP + ' & ' +  quantum_state + du.wave_label(self.m_S_tot[i], self.m_J_tot[i], self.m_L_tot[i])+'&'
-            dec.print_row_latex(compare, self.m_mass[i], mass_decs_B, wave_label, channel_widths, errors_up, errors_dn, channel_widths_cqm, f_decay_indi)
-
-        dec.print_bottom_latex(baryons, f_decay_indi)
+            wave_label= "$"+baryon_symbol+'_c('+str(abs(round(self.m_mass[i+off_set])))+')$  & ' + JP + ' & ' +  quantum_state + du.wave_label(self.m_S_tot[i+off_set], self.m_J_tot[i+off_set], self.m_L_tot[i+off_set])+'&'
+            dec.print_row_latex(compare, self.m_mass[i+off_set], mass_decs_B, wave_label, channel_widths, errors_up, errors_dn, channel_widths_cqm, f_decay_indi)
+      
+        dec.print_charm_latex(baryons, f_decay_indi)
 
 
     def latex_string_value_error(self, value, decimals=2, units='Mev'):
@@ -487,23 +501,23 @@ class BottomTables:
         if not os.path.exists(self.m_workpath+"/tables/"):
             os.mkdir(self.m_workpath+"/tables/")
         f = open(self.m_workpath+'/tables/fit_parameters_combined.tex', "w")
-        print("\\begin{tabular}{c | c c}\hline \hline", file=f)
-        print(" Parameter  &  Three-quark value       & Diquark value    \\\ \hline", file=f)
-        print(" $m_{b}$ &",                   M1, '&', MB,  "\\\ ", file=f)
-        print(" $m_{s}$ &",                   M2, '&', dd,  "\\\ ", file=f)
-        print(" $m_{n}$ &",                   M3, '&', dd,  "\\\ ", file=f)
-        print(" $m_{D_{\\Omega}}$          &",dd, '&', Md1, "\\\ ", file=f)
-        print(" $m_{D_{\\Xi}}$             &",dd, '&', Md2, "\\\ ", file=f)
-        print(" $m_{D_{\\Sigma,\\Lambda}}$ &",dd, '&', Md3, "\\\ ", file=f)
-        print(" $K_b$   &"                   ,K , '&', K_di,"\\\ ", file=f)
-        print(" $P_S$     &"                   ,A , '&', A_di,"\\\ ", file=f)
-        print(" $P_{SL}$     &"                   ,B , '&', B_di,"\\\ ", file=f)
-        print(" $P_{I}$     &"                   ,E , '&', E_di,"\\\ ", file=f)
-        print(" $P_{f}$     &"                   ,G , '&', G_di,"\\\ ", file=f)
-        print("\hline\hline", file=f)
-        print("\end{tabular}", file=f)
-        print("\caption{Model fitted paremeters parameters.}",file=f)
-        print("\label{tab:comb_fit}", file=f)
+        print(r"\\begin{tabular}{c | c c}\hline \hline", file=f)
+        print(r" Parameter  &  Three-quark value       & Diquark value    \\\ \hline", file=f)
+        print(r" $m_{c}$ &",                   M1, '&', MB,  "\\\\ ", file=f)
+        print(r" $m_{s}$ &",                   M2, '&', dd,  "\\\\ ", file=f)
+        print(r" $m_{n}$ &",                   M3, '&', dd,  "\\\\ ", file=f)
+        print(r" $m_{D_{\\Omega}}$          &",dd, '&', Md1, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Xi}}$             &",dd, '&', Md2, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Sigma,\\Lambda}}$ &",dd, '&', Md3, "\\\\ ", file=f)
+        print(r" $K_b$   &"                   ,K , '&', K_di,"\\\\ ", file=f)
+        print(r" $P_S$     &"                   ,A , '&', A_di,"\\\\ ", file=f)
+        print(r" $P_{SL}$     &"                   ,B , '&', B_di,"\\\\ ", file=f)
+        print(r" $P_{I}$     &"                   ,E , '&', E_di,"\\\\ ", file=f)
+        print(r" $P_{f}$     &"                   ,G , '&', G_di,"\\\\ ", file=f)
+        print(r"\hline\hline", file=f)
+        print(r"\end{tabular}", file=f)
+        print(r"\caption{Model fitted paremeters parameters.}",file=f)
+        print(r"\label{tab:comb_fit}", file=f)
         f.close()
 
 
@@ -536,25 +550,25 @@ class BottomTables:
         if not os.path.exists(self.m_workpath+"/tables/"):
             os.mkdir(self.m_workpath+"/tables/")
         f = open(self.m_workpath+'/tables/fit_parameters_combined_flavor.tex', "w")
-        print("\\begin{tabular}{c | c c}\hline \hline", file=f)
-        print(" Parameter  &  Three-quark value       & Diquark value    \\\ \hline", file=f)
-        print(" $m_{b}$ &",                   M1, '&', MB,  "\\\ ", file=f)
-        print(" $m_{s}$ &",                   M2, '&', dd,  "\\\ ", file=f)
-        print(" $m_{n}$ &",                   M3, '&', dd,  "\\\ ", file=f)
-        print(" $m_{D_{\\Omega}}$          &",dd, '&', Md1, "\\\ ", file=f)
-        print(" $m_{D_{\\Xi'}}$            &",dd, '&', Md2, "\\\ ", file=f)
-        print(" $m_{D_{\\Sigma}}$          &",dd, '&', Md3, "\\\ ", file=f)
-        print(" $m_{D_{\\Lambda}}$         &",dd, '&', Md4, "\\\ ", file=f)
-        print(" $m_{D_{\\Xi}}$             &",dd, '&', Md5, "\\\ ", file=f)
-        print(" $K_b$   &"                   ,K , '&', K_di,"\\\ ", file=f)
-        print(" $P_S$     &"                   ,A , '&', A_di,"\\\ ", file=f)
-        print(" $P_{SL}$     &"                   ,B , '&', B_di,"\\\ ", file=f)
-        print(" $P_{I}$     &"                   ,E , '&', E_di,"\\\ ", file=f)
-        print(" $P_{f}$     &"                   ,G , '&', G_di,"\\\ ", file=f)
-        print("\hline\hline", file=f)
-        print("\end{tabular}", file=f)
-        print("\caption{Model fitted paremeters parameters.}",file=f)
-        print("\label{tab:comb_fit}", file=f)
+        print(r"\\begin{tabular}{c | c c}\hline \hline", file=f)
+        print(r" Parameter  &  Three-quark value       & Diquark value    \\\ \hline", file=f)
+        print(r" $m_{c}$ &",                   M1, '&', MB,  "\\\\ ", file=f)
+        print(r" $m_{s}$ &",                   M2, '&', dd,  "\\\\ ", file=f)
+        print(r" $m_{n}$ &",                   M3, '&', dd,  "\\\\ ", file=f)
+        print(r" $m_{D_{\\Omega}}$          &",dd, '&', Md1, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Xi'}}$            &",dd, '&', Md2, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Sigma}}$          &",dd, '&', Md3, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Lambda}}$         &",dd, '&', Md4, "\\\\ ", file=f)
+        print(r" $m_{D_{\\Xi}}$             &",dd, '&', Md5, "\\\\ ", file=f)
+        print(r" $K_b$   &"                   ,K , '&', K_di,"\\\\ ", file=f)
+        print(r" $P_S$     &"                   ,A , '&', A_di,"\\\\ ", file=f)
+        print(r" $P_{SL}$     &"                   ,B , '&', B_di,"\\\\ ", file=f)
+        print(r" $P_{I}$     &"                   ,E , '&', E_di,"\\\\ ", file=f)
+        print(r" $P_{f}$     &"                   ,G , '&', G_di,"\\\\ ", file=f)
+        print(r"\hline\hline", file=f)
+        print(r"\end{tabular}", file=f)
+        print(r"\caption{Model fitted paremeters parameters.}",file=f)
+        print(r"\label{tab:comb_fit}", file=f)
         f.close()
         
 
@@ -565,19 +579,19 @@ class BottomTables:
         if not os.path.exists(self.m_workpath+"/tables/"):
             os.mkdir(self.m_workpath+"/tables/")
         f = open(self.m_workpath+'/tables/correlation_3quark.tex', "w")
-        print("\\begin{tabular}{c  c  c  c  c  c  c  c  c}\hline \hline", file=f)
-        print("         &  $m_{b}$       &     $m_{s}$    &    $m_{n}$  &      $K_b$    & $P_S$ & $P_{SL}$ & $P_I$ & $P_f$ \\\ \hline", file=f)
-        print(" $m_{b}$ &     1   &   &   &   &    &   &   &  \\\ ", file=f)
-        print(" $m_{s}$ &",self.m_rho_m2m1, "&  1   &   &   &   &   &   &  \\\ ", file=f)
-        print(" $m_{n}$ &",self.m_rho_m3m1, "&", self.m_rho_m3m2,"&  1   &   &   &   &   & \\\ ", file=f)
-        print(" $K_b$   &",self.m_rho_km1,  "&", self.m_rho_km2 ,"&", self.m_rho_km3, "&  1   &   &   &   &   \\\ ", file=f)
-        print(" $P_S$   &",self.m_rho_am1,  "&", self.m_rho_am2 ,"&", self.m_rho_am3, "&", self.m_rho_ak,"& 1 &   &   & \\\ ", file=f)
-        print(" $P_{SL}$&",self.m_rho_bm1,  "&", self.m_rho_bm2 ,"&", self.m_rho_bm3, "&", self.m_rho_bk,"&",self.m_rho_ba,"& 1  &   & \\\ ", file=f)
-        print(" $P_I$   &",self.m_rho_em1,  "&", self.m_rho_em2 ,"&", self.m_rho_em3, "&", self.m_rho_ek,"&",self.m_rho_ea,"&",self.m_rho_eb,"& 1  &  \\\ ", file=f)
-        print(" $P_f$   &",self.m_rho_gm1,  "&", self.m_rho_gm2 ,"&", self.m_rho_gm3, "&", self.m_rho_gk,"&",self.m_rho_ga,"&",self.m_rho_gb,"&",self.m_rho_ge,"& 1 \\\ \hline \hline", file=f)
-        print('\end{tabular}', file=f)
-        print("\caption{Correlation between fitted parameters, three-quark stystem }",file=f)
-        print("\label{tab:3quark_corr}", file=f)
+        print(r"\\begin{tabular}{c  c  c  c  c  c  c  c  c}\hline \hline", file=f)
+        print(r"         &  $m_{c}$       &     $m_{s}$    &    $m_{n}$  &      $K_b$    & $P_S$ & $P_{SL}$ & $P_I$ & $P_f$ \\\ \hline", file=f)
+        print(r" $m_{c}$ &     1   &   &   &   &    &   &   &  \\\ ", file=f)
+        print(r" $m_{s}$ &",self.m_rho_m2m1, "&  1   &   &   &   &   &   &  \\\\ ", file=f)
+        print(r" $m_{n}$ &",self.m_rho_m3m1, "&", self.m_rho_m3m2,"&  1   &   &   &   &   & \\\\ ", file=f)
+        print(r" $K_b$   &",self.m_rho_km1,  "&", self.m_rho_km2 ,"&", self.m_rho_km3, "&  1   &   &   &   &   \\\\ ", file=f)
+        print(r" $P_S$   &",self.m_rho_am1,  "&", self.m_rho_am2 ,"&", self.m_rho_am3, "&", self.m_rho_ak,"& 1 &   &   & \\\\ ", file=f)
+        print(r" $P_{SL}$&",self.m_rho_bm1,  "&", self.m_rho_bm2 ,"&", self.m_rho_bm3, "&", self.m_rho_bk,"&",self.m_rho_ba,"& 1  &   & \\\\ ", file=f)
+        print(r" $P_I$   &",self.m_rho_em1,  "&", self.m_rho_em2 ,"&", self.m_rho_em3, "&", self.m_rho_ek,"&",self.m_rho_ea,"&",self.m_rho_eb,"& 1  &  \\\\ ", file=f)
+        print(r" $P_f$   &",self.m_rho_gm1,  "&", self.m_rho_gm2 ,"&", self.m_rho_gm3, "&", self.m_rho_gk,"&",self.m_rho_ga,"&",self.m_rho_gb,"&",self.m_rho_ge,"& 1 \\\\ \\hline \\hline", file=f)
+        print(r'\end{tabular}', file=f)
+        print(r"\caption{Correlation between fitted parameters, three-quark stystem }",file=f)
+        print(r"\label{tab:3quark_corr}", file=f)
         f.close()
 
     def correlation_table_di_flavor(self):
@@ -593,22 +607,22 @@ class BottomTables:
         if not os.path.exists(self.m_workpath+"/tables/"):
             os.mkdir(self.m_workpath+"/tables/")
         f = open(self.m_workpath+'/tables/correlation_diquark.tex', "w")
-        print("\\begin{tabular}{c | c c c c c c c c c c c}\hline \hline", file=f)
-        print("         &  $m_{b}$",  "&",  md1, "&",  md2,  "&", md3, "&", md4, "&", md5, "&  $K_b$   & $P_S$ & $P_{SL}$ & $P_{I}$ & $P_f$ \\\ \hline", file=f)
-        print(" $m_{b}$ &     1   &   &   &   &    &   &   &  & & &  \\\ ", file=f)
-        print(md1,     "&",self.m_rho_mbmd1, "&  1   &   &  &   &   &   &    &   &   &  \\\ ", file=f)
-        print(md2,     "&",self.m_rho_mbmd2,  "&",self.m_rho_md2md1,"&  1   &   &   &   &  &  &  &  & \\\ ", file=f)
-        print(md3,     "&",self.m_rho_mbmd3,  "&",self.m_rho_md3md1,"&",self.m_rho_md3md2, "&  1   &   &   &   &   &   &  &  \\\ ", file=f)
-        print(md4,     "&",self.m_rho_mbmd4,  "&",self.m_rho_md4md1,"&",self.m_rho_md4md2,"&", self.m_rho_md4md3, "&  1   &   &   &   &    &   &  \\\ ", file=f)
-        print(md5,     "&",self.m_rho_mbmd5,  "&",self.m_rho_md5md1,"&",self.m_rho_md5md2,"&", self.m_rho_md5md3, "&",self.m_rho_md5md4,"&  1   &   &   &   &    &   \\\ ", file=f)
-        print(" $K_b$   &",self.m_rho_kmb_di, "&",self.m_rho_kmd1  ,"&",self.m_rho_kmd2  ,"&", self.m_rho_kmd3,   "&",self.m_rho_kmd4,  "&", self.m_rho_kmd5, "& 1   &   &   &   & \\\ ", file=f)
-        print(" $P_S$   &",self.m_rho_amb_di, "&",self.m_rho_amd1  ,"&",self.m_rho_amd2  ,"&", self.m_rho_amd3,   "&",self.m_rho_amd4,  "&", self.m_rho_amd5, "&",self.m_rho_ak_di,"& 1   &   &   & \\\ ", file=f)
-        print(" $P_{SL}$&",self.m_rho_bmb_di, "&",self.m_rho_bmd1  ,"&",self.m_rho_bmd2  ,"&", self.m_rho_bmd3,   "&",self.m_rho_bmd4,  "&", self.m_rho_bmd5, "&",self.m_rho_bk_di,"&", self.m_rho_ba_di, "& 1   &   &  \\\ ", file=f)
-        print(" $P_I$   &",self.m_rho_emb_di, "&",self.m_rho_emd1  ,"&",self.m_rho_emd2  ,"&", self.m_rho_emd3,   "&",self.m_rho_emd4,  "&", self.m_rho_emd5, "&",self.m_rho_ek_di,"&", self.m_rho_ea_di,"&",self.m_rho_eb,"& 1   & \\\ ", file=f)
-        print(" $P_f$   &",self.m_rho_gmb_di, "&",self.m_rho_gmd1  ,"&",self.m_rho_gmd2  ,"&", self.m_rho_gmd3,   "&",self.m_rho_gmd4,  "&", self.m_rho_gmd5, "&",self.m_rho_gb_di,"&", self.m_rho_ga_di,"&",self.m_rho_gb,"&", self.m_rho_ge_di, "&","1 \\\ \hline \hline", file=f) 
-        print('\end{tabular}', file=f)
-        print("\caption{Correlation between fitted parameters, diquark system.}",file=f)
-        print("\label{tab:diquark_corr}", file=f)
+        print(r"\\begin{tabular}{c | c c c c c c c c c c c}\hline \hline", file=f)
+        print(r"         &  $m_{c}$",  "&",  md1, "&",  md2,  "&", md3, "&", md4, "&", md5, r"&  $K_b$   & $P_S$ & $P_{SL}$ & $P_{I}$ & $P_f$ \\\ \hline", file=f)
+        print(r" $m_{c}$ &     1   &   &   &   &    &   &   &  & & &  \\\ ", file=f)
+        print(md1,     "&",self.m_rho_mbmd1, r"&  1   &   &  &   &   &   &    &   &   &  \\\ ", file=f)
+        print(md2,     "&",self.m_rho_mbmd2,  "&",self.m_rho_md2md1,r"&  1   &   &   &   &  &  &  &  & \\\ ", file=f)
+        print(md3,     "&",self.m_rho_mbmd3,  "&",self.m_rho_md3md1,"&",self.m_rho_md3md2, r"&  1   &   &   &   &   &   &  &  \\\ ", file=f)
+        print(md4,     "&",self.m_rho_mbmd4,  "&",self.m_rho_md4md1,"&",self.m_rho_md4md2,"&", self.m_rho_md4md3, r"&  1   &   &   &   &    &   &  \\\ ", file=f)
+        print(md5,     "&",self.m_rho_mbmd5,  "&",self.m_rho_md5md1,"&",self.m_rho_md5md2,"&", self.m_rho_md5md3, "&",self.m_rho_md5md4,r"&  1   &   &   &   &    &   \\\ ", file=f)
+        print(r" $K_b$   &",self.m_rho_kmb_di, "&",self.m_rho_kmd1  ,"&",self.m_rho_kmd2  ,"&", self.m_rho_kmd3,   "&",self.m_rho_kmd4,  "&", self.m_rho_kmd5, r"& 1   &   &   &   & \\\ ", file=f)
+        print(r" $P_S$   &",self.m_rho_amb_di, "&",self.m_rho_amd1  ,"&",self.m_rho_amd2  ,"&", self.m_rho_amd3,   "&",self.m_rho_amd4,  "&", self.m_rho_amd5, "&",self.m_rho_ak_di,r"& 1   &   &   & \\\ ", file=f)
+        print(r" $P_{SL}$&",self.m_rho_bmb_di, "&",self.m_rho_bmd1  ,"&",self.m_rho_bmd2  ,"&", self.m_rho_bmd3,   "&",self.m_rho_bmd4,  "&", self.m_rho_bmd5, "&",self.m_rho_bk_di,"&", self.m_rho_ba_di, r"& 1   &   &  \\\ ", file=f)
+        print(r" $P_I$   &",self.m_rho_emb_di, "&",self.m_rho_emd1  ,"&",self.m_rho_emd2  ,"&", self.m_rho_emd3,   "&",self.m_rho_emd4,  "&", self.m_rho_emd5, "&",self.m_rho_ek_di,"&", self.m_rho_ea_di,"&",self.m_rho_eb,r"& 1   & \\\ ", file=f)
+        print(r" $P_f$   &",self.m_rho_gmb_di, "&",self.m_rho_gmd1  ,"&",self.m_rho_gmd2  ,"&", self.m_rho_gmd3,   "&",self.m_rho_gmd4,  "&", self.m_rho_gmd5, "&",self.m_rho_gb_di,"&", self.m_rho_ga_di,"&",self.m_rho_gb,"&", self.m_rho_ge_di, "&",r"1 \\\ \hline \hline", file=f) 
+        print(r'\end{tabular}', file=f)
+        print(r"\caption{Correlation between fitted parameters, diquark system.}",file=f)
+        print(r"\label{tab:diquark_corr}", file=f)
         f.close()
 
     def correlation_table_di(self):
@@ -619,20 +633,20 @@ class BottomTables:
         md2="$m_{D_{\\Xi}}$"
         md3="$m_{D_{\\Sigma,\\Lambda}}$"
         f = open(self.m_workpath+'/tables/correlation_diquark.tex', "w")
-        print("\\begin{tabular}{c | c c c c c c c c c}\hline \hline", file=f)
-        print("         &  $m_{c}$",  "&",  md1, "&",  md2,  "&", md3  ,"&  $K_c$   & $A$ & $B$ & $E$ & $G$ \\\ \hline", file=f)
-        print(" $m_{c}$ &     1   &   &   &   &    &   &   &  &  \\\ ", file=f)
-        print(md1,     "&",self.m_rho_md2md1, "&  1   &   &   &   &    &   &   &  \\\ ", file=f)
-        print(md2,     "&",self.m_rho_md3md1, "&",self.m_rho_md3md2,"&  1   &   &   &   &    &   & \\\ ", file=f)
-        print(md3,     "&",self.m_rho_mbmd1,  "&",self.m_rho_mbmd2 ,"&",self.m_rho_mbmd3, "&  1   &   &   &   &    &   \\\ ", file=f)
-        print(" $K_c$   &",self.m_rho_kmd1 ,  "&",self.m_rho_kmd2  ,"&",self.m_rho_kmd3 , "&", self.m_rho_kmb,"& 1   &   &   &   & \\\ ", file=f)
-        print(" $A$     &",self.m_rho_amd1 ,  "&",self.m_rho_amd2  ,"&",self.m_rho_amd3 , "&", self.m_rho_amb,"&",self.m_rho_ak,"& 1   &   &   & \\\ ", file=f)
-        print(" $B$     &",self.m_rho_bmd1 ,  "&",self.m_rho_bmd2  ,"&",self.m_rho_bmd3 , "&", self.m_rho_bmb,"&",self.m_rho_bk,"&",self.m_rho_ba,"& 1   &   &  \\\ ", file=f)
-        print(" $E$     &",self.m_rho_emd1 ,  "&",self.m_rho_emd2  ,"&",self.m_rho_emd3 , "&", self.m_rho_emb,"&",self.m_rho_ek,"&",self.m_rho_ea,"&",self.m_rho_eb,"& 1   & \\\ ", file=f)
-        print(" $G$     &",self.m_rho_gmd1 ,  "&",self.m_rho_gmd2  ,"&",self.m_rho_gmd3 , "&", self.m_rho_gmb,"&",self.m_rho_gk,"&",self.m_rho_ga,"&",self.m_rho_gb,"&", self.m_rho_ge, "&","1 \\\ \hline \hline", file=f) 
-        print('\end{tabular}', file=f)
-        print("\caption{Correlation between fitted parameters, diquark system.}",file=f)
-        print("\label{tab:diquark_corr}", file=f)
+        print(r"\\begin{tabular}{c | c c c c c c c c c}\hline \hline", file=f)
+        print(r"         &  $m_{c}$",  "&",  md1, "&",  md2,  "&", md3  ,r"&  $K_c$   & $A$ & $B$ & $E$ & $G$ \\\ \hline", file=f)
+        print(r" $m_{c}$ &     1   &   &   &   &    &   &   &  &  \\\ ", file=f)
+        print(md1,     "&",self.m_rho_md2md1, r"&  1   &   &   &   &    &   &   &  \\\ ", file=f)
+        print(md2,     "&",self.m_rho_md3md1, "&",self.m_rho_md3md2,r"&  1   &   &   &   &    &   & \\\ ", file=f)
+        print(md3,     "&",self.m_rho_mbmd1,  "&",self.m_rho_mbmd2 ,"&",self.m_rho_mbmd3, r"&  1   &   &   &   &    &   \\\ ", file=f)
+        print(r" $K_c$   &",self.m_rho_kmd1 ,  "&",self.m_rho_kmd2  ,"&",self.m_rho_kmd3 , "&", self.m_rho_kmb,r"& 1   &   &   &   & \\\ ", file=f)
+        print(r" $A$     &",self.m_rho_amd1 ,  "&",self.m_rho_amd2  ,"&",self.m_rho_amd3 , "&", self.m_rho_amb,"&",self.m_rho_ak,r"& 1   &   &   & \\\ ", file=f)
+        print(r" $B$     &",self.m_rho_bmd1 ,  "&",self.m_rho_bmd2  ,"&",self.m_rho_bmd3 , "&", self.m_rho_bmb,"&",self.m_rho_bk,"&",self.m_rho_ba,r"& 1   &   &  \\\ ", file=f)
+        print(r" $E$     &",self.m_rho_emd1 ,  "&",self.m_rho_emd2  ,"&",self.m_rho_emd3 , "&", self.m_rho_emb,"&",self.m_rho_ek,"&",self.m_rho_ea,"&",self.m_rho_eb,r"& 1   & \\\ ", file=f)
+        print(r" $G$     &",self.m_rho_gmd1 ,  "&",self.m_rho_gmd2  ,"&",self.m_rho_gmd3 , "&", self.m_rho_gmb,"&",self.m_rho_gk,"&",self.m_rho_ga,"&",self.m_rho_gb,"&", self.m_rho_ge, "&",r"1 \\\ \hline \hline", file=f) 
+        print(r'\end{tabular}', file=f)
+        print(r"\caption{Correlation between fitted parameters, diquark system.}",file=f)
+        print(r"\label{tab:diquark_corr}", file=f)
         f.close()
 
     def m_load_data(self, baryons):
@@ -692,8 +706,8 @@ class BottomTables:
         self.m_sampled_md1  = data_frame_di["Md1"]
         self.m_sampled_md2  = data_frame_di["Md2"]
         self.m_sampled_md3  = data_frame_di["Md3"]
-        self.m_sampled_md4  = data_frame_di["Md4"]
-        self.m_sampled_md5  = data_frame_di["Md5"]
+        self.m_sampled_md4  = data_frame_di["Md3"]
+        self.m_sampled_md5  = data_frame_di["Md3"]
         self.m_sampled_mb   = data_frame_di["MB"]
         self.m_sampled_k_di = data_frame_di["K"].pow(2).div(pow(1000,3))
         self.m_sampled_a_di = data_frame_di["A"]
@@ -747,8 +761,8 @@ class BottomTables:
 
         self.m_rho_md2md1 =   round(np.mean(data_frame['rho_md2md1']), 2)
         self.m_rho_md3md1 =   round(np.mean(data_frame['rho_md3md1']), 2)
-        self.m_rho_md4md1 =   round(np.mean(data_frame['rho_md4md1']), 2)
-        self.m_rho_md5md1 =   round(np.mean(data_frame['rho_md5md1']), 2)
+        self.m_rho_md4md1 =   round(np.mean(data_frame['rho_md2md1']), 2)
+        self.m_rho_md5md1 =   round(np.mean(data_frame['rho_md2md1']), 2)
         self.m_rho_mbmd1  =   round(np.mean(data_frame['rho_mbmd1']), 2)
         self.m_rho_kmd1   =   round(np.mean(data_frame['rho_kmd1']), 2)
         self.m_rho_amd1   =   round(np.mean(data_frame['rho_amd1']), 2)
@@ -756,35 +770,35 @@ class BottomTables:
         self.m_rho_emd1   =   round(np.mean(data_frame['rho_emd1']), 2)
         self.m_rho_gmd1   =   round(np.mean(data_frame['rho_gmd1']), 2)
         self.m_rho_md3md2 =   round(np.mean(data_frame['rho_md3md2']), 2)
-        self.m_rho_md4md2 =   round(np.mean(data_frame['rho_md4md2']), 2)
-        self.m_rho_md5md2 =   round(np.mean(data_frame['rho_md5md2']), 2)
+        self.m_rho_md4md2 =   round(np.mean(data_frame['rho_md2md1']), 2)
+        self.m_rho_md5md2 =   round(np.mean(data_frame['rho_md2md1']), 2)
         self.m_rho_mbmd2  =   round(np.mean(data_frame['rho_mbmd2']), 2)
         self.m_rho_kmd2   =   round(np.mean(data_frame['rho_kmd2']), 2)
         self.m_rho_amd2   =   round(np.mean(data_frame['rho_amd2']), 2)
         self.m_rho_bmd2   =   round(np.mean(data_frame['rho_bmd2']), 2)
         self.m_rho_emd2   =   round(np.mean(data_frame['rho_emd2']), 2)
         self.m_rho_gmd2   =   round(np.mean(data_frame['rho_gmd2']), 2)
-        self.m_rho_md4md3 =   round(np.mean(data_frame['rho_md4md3']), 2)
-        self.m_rho_md5md3 =   round(np.mean(data_frame['rho_md5md3']), 2)
+        self.m_rho_md4md3 =   round(np.mean(data_frame['rho_md2md1']), 2)
+        self.m_rho_md5md3 =   round(np.mean(data_frame['rho_md2md1']), 2)
         self.m_rho_mbmd3  =   round(np.mean(data_frame['rho_mbmd3']), 2)
         self.m_rho_kmd3   =   round(np.mean(data_frame['rho_kmd3']), 2)
         self.m_rho_amd3   =   round(np.mean(data_frame['rho_amd3']), 2)
         self.m_rho_bmd3   =   round(np.mean(data_frame['rho_bmd3']), 2)
         self.m_rho_emd3   =   round(np.mean(data_frame['rho_emd3']), 2)
         self.m_rho_gmd3   =   round(np.mean(data_frame['rho_gmd3']), 2)
-        self.m_rho_md5md4 =   round(np.mean(data_frame['rho_md5md4']), 2)
-        self.m_rho_mbmd4  =   round(np.mean(data_frame['rho_mbmd4']), 2)
-        self.m_rho_kmd4   =   round(np.mean(data_frame['rho_kmd4']), 2)
-        self.m_rho_amd4   =   round(np.mean(data_frame['rho_amd4']), 2)
-        self.m_rho_bmd4   =   round(np.mean(data_frame['rho_bmd4']), 2)
-        self.m_rho_emd4   =   round(np.mean(data_frame['rho_emd4']), 2)
-        self.m_rho_gmd4   =   round(np.mean(data_frame['rho_gmd4']), 2)
-        self.m_rho_mbmd5  =   round(np.mean(data_frame['rho_mbmd5']), 2)
-        self.m_rho_kmd5   =   round(np.mean(data_frame['rho_kmd5']), 2)
-        self.m_rho_amd5   =   round(np.mean(data_frame['rho_amd5']), 2)
-        self.m_rho_bmd5   =   round(np.mean(data_frame['rho_bmd5']), 2)
-        self.m_rho_emd5   =   round(np.mean(data_frame['rho_emd5']), 2)
-        self.m_rho_gmd5   =   round(np.mean(data_frame['rho_gmd5']), 2)
+        self.m_rho_md5md4 =   round(np.mean(data_frame['rho_md2md1']), 2)
+        self.m_rho_mbmd4  =   round(np.mean(data_frame['rho_mbmd2']), 2)
+        self.m_rho_kmd4   =   round(np.mean(data_frame['rho_kmd2']), 2)
+        self.m_rho_amd4   =   round(np.mean(data_frame['rho_amd2']), 2)
+        self.m_rho_bmd4   =   round(np.mean(data_frame['rho_bmd2']), 2)
+        self.m_rho_emd4   =   round(np.mean(data_frame['rho_emd2']), 2)
+        self.m_rho_gmd4   =   round(np.mean(data_frame['rho_gmd2']), 2)
+        self.m_rho_mbmd5  =   round(np.mean(data_frame['rho_mbmd2']), 2)
+        self.m_rho_kmd5   =   round(np.mean(data_frame['rho_kmd2']), 2)
+        self.m_rho_amd5   =   round(np.mean(data_frame['rho_amd2']), 2)
+        self.m_rho_bmd5   =   round(np.mean(data_frame['rho_bmd2']), 2)
+        self.m_rho_emd5   =   round(np.mean(data_frame['rho_emd2']), 2)
+        self.m_rho_gmd5   =   round(np.mean(data_frame['rho_gmd2']), 2)
         self.m_rho_kmb_di =   round(np.mean(data_frame['rho_kmb']), 2)
         self.m_rho_amb_di =   round(np.mean(data_frame['rho_amb']), 2)
         self.m_rho_bmb_di =   round(np.mean(data_frame['rho_bmb']), 2)
@@ -802,7 +816,7 @@ class BottomTables:
         self.m_rho_ge_di  =   round(np.mean(data_frame['rho_ge']), 2)
 
     def m_load_data_compare(self, baryons):
-        data_frame = pd.read_csv(self.m_workpath+"/bottomfw/data/three_quark_comp/masses_" + baryons + "_compare.csv")
+        data_frame = pd.read_csv(self.m_workpath+"/charmfw/data/three_quark_comp/masses_" + baryons + "_compare.csv")
         self.m_mass_ysh  = round(data_frame["Yoshida"])
         self.m_mass_hsk  = round(data_frame["Hosaka"])
         self.m_mass_rob  = round(data_frame["Roberts"])

@@ -18,7 +18,7 @@ import pandas as pd
 from charmfw.common import data_utils as du
 
 
-class BottomPlots:
+class CharmPlots:
     """
     Class to produce mass spectra plots
     """    

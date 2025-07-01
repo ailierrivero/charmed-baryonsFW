@@ -16,7 +16,7 @@ import pandas as pd
 import json
 # framework modules
 import charmfw.baryons.data_preparation as dp
-from charmfw.baryons.charm_diquark_flavor import BottomDiquark
+from charmfw.baryons.charm_diquark_flavor import CharmDiquark
 
 
 workpath = os.getcwd()
@@ -309,7 +309,7 @@ else:
     df.to_csv(workpath+"/batch_results_diquark/"+run_baryons+"/correlation/"+str(batch_number)+".csv", index=False)
 
 # calculate the results using bootstrap simulation above
-results = BottomDiquark(baryons=run_baryons, params=param, sampled=sampled, corr_mat=corr_mat_diquark, asymmetric=asymmetric, batch_number=batch_number, workpath=workpath)
+results = CharmDiquark(baryons=run_baryons, params=param, sampled=sampled, corr_mat=corr_mat_diquark, asymmetric=asymmetric, batch_number=batch_number, workpath=workpath)
 results.fetch_values()
 results.paper_results_predictions(bootstrap=bootstrap, bootstrap_width=bootstrap_width, prev_params=prev_params, decay_width=decay_width)
 

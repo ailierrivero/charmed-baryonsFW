@@ -279,189 +279,189 @@ def latex_decay_label(baryon, decPr):
     if(baryon==1 or baryon=='omegas'):
         baryon_name = "omega"
         if(decPr==1):
-            decPr_name = ("$\Xi_{b} K$", xi_mass, kaon_mass)
+            decPr_name = (r"$\Xi_{c} K$", xi_mass, kaon_mass)
         elif(decPr==2):                                                                         
-            decPr_name = ("$\Xi'_{b} K$", xi_p_mass, kaon_mass)
+            decPr_name = (r"$\Xi'_{c} K$", xi_p_mass, kaon_mass)
         elif(decPr==3):                              
-            decPr_name = ("$\Xi^{*}_{b} K$", xi_s_mass, kaon_mass)
+            decPr_name = (r"$\Xi^{*}_{c} K$", xi_s_mass, kaon_mass)
         elif(decPr==4):
-            decPr_name = ("$\Xi_{b} K^{*}$", xi_mass, kaon_s_mass)      
+            decPr_name = (r"$\Xi_{c} K^{*}$", xi_mass, kaon_s_mass)      
         elif(decPr==5):                                                                         
-            decPr_name = ("$\Xi'_{b}K^{*}$", xi_p_mass, kaon_s_mass)    
+            decPr_name = (r"$\Xi'_{c}K^{*}$", xi_p_mass, kaon_s_mass)    
         elif(decPr==6):                                                                         
-            decPr_name = ("$\Xi^{*}_{b} K^{*}$", xi_s_mass, kaon_s_mass)    
+            decPr_name = (r"$\Xi^{*}_{c} K^{*}$", xi_s_mass, kaon_s_mass)    
         elif(decPr==7):                                                                         
-            decPr_name = ("$\Omega_{b} \eta$", omega_mass, eta_mass)      
+            decPr_name = (r"$\Omega_{c} \eta$", omega_mass, eta_mass)      
         elif(decPr==8):                                                                         
-            decPr_name = ("$\Omega^{*}_{b} \eta$", omega_s_mass, eta_mass)    
+            decPr_name = (r"$\Omega^{*}_{c} \eta$", omega_s_mass, eta_mass)    
         elif(decPr==9):                                                                         
-            decPr_name = ("$\Omega_{b} \phi$", omega_mass, phi_mass)      
+            decPr_name = (r"$\Omega_{c} \phi$", omega_mass, phi_mass)      
         elif(decPr==10):
-            decPr_name = ("$\Omega^{*}_{b} \phi$", omega_s_mass, phi_mass)    
+            decPr_name = (r"$\Omega^{*}_{c} \phi$", omega_s_mass, phi_mass)    
         elif(decPr==11):
-            decPr_name = ("$\Omega_{b} \eta'$", omega_mass, eta_p_mass)    
+            decPr_name = (r"$\Omega_{c} \eta'$", omega_mass, eta_p_mass)    
         elif(decPr==12):
-            decPr_name = ("$\Omega^{*}_{b} \eta'$", omega_s_mass, eta_p_mass)  
+            decPr_name = (r"$\Omega^{*}_{c} \eta'$", omega_s_mass, eta_p_mass)  
         elif(decPr==13):
-            decPr_name = ("$\Xi_{8} B$", Xi_8_mass, B0_mass)        
+            decPr_name = (r"$\Xi_{8} B$", Xi_8_mass, B0_mass)        
         elif(decPr==14):
-            decPr_name = ("$\Xi_{10} B$", Xi_10_mass, B0_mass)
+            decPr_name = (r"$\Xi_{10} B$", Xi_10_mass, B0_mass)
 
     elif(baryon==2 or baryon==5 or baryon=='cascades' or baryon=='cascades_anti3'):
         if(baryon==2): baryon_name = 'cas_6'
         if(baryon==5): baryon_name = 'cas_3'        
         if(decPr==1):
-            decPr_name = ("$\Lambda_{b} K$", lambda_mass, kaon_mass)
+            decPr_name = (r"$\Lambda_{c} K$", lambda_mass, kaon_mass)
         elif(decPr==2):             
-            decPr_name = ("$\Xi_{b} \pi$", xi_mass, pion_mass)
+            decPr_name = (r"$\Xi_{c} \pi$", xi_mass, pion_mass)
         elif(decPr==3):                                                                                           
-            decPr_name = ("$\Xi'_{b} \pi$", xi_p_mass, pion_mass)
+            decPr_name = (r"$\Xi'_{c} \pi$", xi_p_mass, pion_mass)
         elif(decPr==4):                           
-            decPr_name = ("$\Xi^{*}_{b} \pi$", xi_s_mass, pion_mass)
+            decPr_name = (r"$\Xi^{*}_{c} \pi$", xi_s_mass, pion_mass)
         elif(decPr==5):                                                                                           
-            decPr_name = ("$\Sigma_{b} K$", sigma_mass, kaon_mass)
+            decPr_name = (r"$\Sigma_{c} K$", sigma_mass, kaon_mass)
         elif(decPr==6):                                                                                           
-            decPr_name = ("$\Sigma^{*}_{b} K$", sigma_s_mass, kaon_mass)
+            decPr_name = (r"$\Sigma^{*}_{c} K$", sigma_s_mass, kaon_mass)
         elif(decPr==7):                                                                                           
-            decPr_name = ("$\Xi_{b} \eta$", xi_mass, eta_mass)
+            decPr_name = (r"$\Xi_{c} \eta$", xi_mass, eta_mass)
         elif(decPr==8):                                                                                           
-            decPr_name = ("$\Lambda_{b} K^{*}$", lambda_mass, kaon_s_mass)
+            decPr_name = (r"$\Lambda_{c} K^{*}$", lambda_mass, kaon_s_mass)
         elif(decPr==9):                                                                                           
-            decPr_name = ("$\Xi_{b} \\rho$", xi_mass, meson_rho_mass)
+            decPr_name = (r"$\Xi_{c} \\rho$", xi_mass, meson_rho_mass)
         elif(decPr==10):                                                                                          
-            decPr_name = ("$\Xi'_{b} \\rho$", xi_p_mass, meson_rho_mass)
+            decPr_name = (r"$\Xi'_{c} \\rho$", xi_p_mass, meson_rho_mass)
         elif(decPr==11):                                                                                          
-            decPr_name = ("$\Xi^{*}_{b} \\rho$", xi_s_mass, meson_rho_mass)
+            decPr_name = (r"$\Xi^{*}_{c} \\rho$", xi_s_mass, meson_rho_mass)
         elif(decPr==12):                                                                                          
-            decPr_name = ("$\Sigma_{b} K^{*}$", sigma_mass, kaon_s_mass)
+            decPr_name = (r"$\Sigma_{c} K^{*}$", sigma_mass, kaon_s_mass)
         elif(decPr==13):                          
-            decPr_name = ("$\Sigma^{*}_{b} K^{*}$", sigma_s_mass, kaon_s_mass)
+            decPr_name = (r"$\Sigma^{*}_{c} K^{*}$", sigma_s_mass, kaon_s_mass)
         elif(decPr==14):                        
-            decPr_name = ("$\Xi'_{b} \eta$", xi_p_mass, eta_mass)
+            decPr_name = (r"$\Xi'_{c} \eta$", xi_p_mass, eta_mass)
         elif(decPr==15):
-            decPr_name = ("$\Xi^{*}_{b} \eta$", xi_s_mass, eta_mass)
+            decPr_name = (r"$\Xi^{*}_{c} \eta$", xi_s_mass, eta_mass)
         elif(decPr==16):
-            decPr_name = ("$\Xi_{b} \eta'$", xi_mass, eta_p_mass)
+            decPr_name = (r"$\Xi_{c} \eta'$", xi_mass, eta_p_mass)
         elif(decPr==17):
-            decPr_name = ("$\Xi'_{b} \eta'$", xi_p_mass, eta_p_mass)                     
+            decPr_name = (r"$\Xi'_{c} \eta'$", xi_p_mass, eta_p_mass)                     
         elif(decPr==18):
-            decPr_name = ("$\Xi^{*}_{b} \eta'$", xi_s_mass, eta_p_mass)                     
+            decPr_name = (r"$\Xi^{*}_{c} \eta'$", xi_s_mass, eta_p_mass)                     
         elif(decPr==19):
-            decPr_name = ("$\Xi_{b} \omega$", xi_mass, small_omega_mass)
+            decPr_name = (r"$\Xi_{c} \omega$", xi_mass, small_omega_mass)
         elif(decPr==20):                                          
-            decPr_name = ("$\Xi'_{b} \omega$", xi_p_mass, small_omega_mass)               
+            decPr_name = (r"$\Xi'_{c} \omega$", xi_p_mass, small_omega_mass)               
         elif(decPr==21):
-            decPr_name = ("$\Xi^{*}_{b} \omega$", xi_s_mass, small_omega_mass)               
+            decPr_name = (r"$\Xi^{*}_{c} \omega$", xi_s_mass, small_omega_mass)               
         elif(decPr==22):                                                                                          
-            decPr_name = ("$\Xi_{b} \phi$", xi_mass, phi_mass)                         
+            decPr_name = (r"$\Xi_{c} \phi$", xi_mass, phi_mass)                         
         elif(decPr==23):
-            decPr_name = ("$\Xi'_{b} \phi$", xi_p_mass, phi_mass)                       
+            decPr_name = (r"$\Xi'_{c} \phi$", xi_p_mass, phi_mass)                       
         elif(decPr==24):
-            decPr_name = ("$\Xi^{*}_{b} \phi$", xi_s_mass, phi_mass)
+            decPr_name = (r"$\Xi^{*}_{c} \phi$", xi_s_mass, phi_mass)
         elif(decPr==25 and baryon=='cascades'):
-            decPr_name = ("$\Sigma_{8} B$", Sigma_8_mass, B0_mass) #//Sigma_8_lam+B   ^{\lambda}
+            decPr_name = (r"$\Sigma_{8} B$", Sigma_8_mass, B0_mass) #//Sigma_8_lam+B   ^{\lambda}
         elif(decPr==25 and baryon=='cascades_anti3'):
-            decPr_name = ("$\Lambda_{8} B$", Lambda_8_mass, B0_mass) # //Lambda_8_rho D    # ^{\\rho}
+            decPr_name = (r"$\Lambda_{8} B$", Lambda_8_mass, B0_mass) # //Lambda_8_rho D    # ^{\\rho}
         elif(decPr==26 and baryon=='cascades'):
-            decPr_name = ("$\Xi_{8} B_{s}$", Xi_8_mass, Bs_mass) # //Xi_8_lam+Bs      ^{\lambda}     
+            decPr_name = (r"$\Xi_{8} B_{s}$", Xi_8_mass, Bs_mass) # //Xi_8_lam+Bs      ^{\lambda}     
         elif(decPr==26 and baryon=='cascades_anti3'):
-            decPr_name = ("$\Lambda_{8} B^{*}$", Lambda_8_mass, B_star_mass) # //Lambda_8_rho D # ^{\\rho}
+            decPr_name = (r"$\Lambda_{8} B^{*}$", Lambda_8_mass, B_star_mass) # //Lambda_8_rho D # ^{\\rho}
         elif(decPr==27 and baryon=='cascades'):          
-            decPr_name = ("$\Sigma_{8} B^{*}$", Sigma_8_mass, B_star_mass) #  //Sigma_8_lam+B* # ^{\lambda}
+            decPr_name = (r"$\Sigma_{8} B^{*}$", Sigma_8_mass, B_star_mass) #  //Sigma_8_lam+B* # ^{\lambda}
         elif(decPr==27 and baryon=='cascades_anti3'):
-            decPr_name = ("$\Sigma_{8} B$", Sigma_8_mass, B0_mass) #  //Sigma_8_rho D    # ^{\\rho}
+            decPr_name = (r"$\Sigma_{8} B$", Sigma_8_mass, B0_mass) #  //Sigma_8_rho D    # ^{\\rho}
         elif(decPr==28 and baryon=='cascades'):
-            decPr_name = ("$\Sigma_{10} B$", Sigma_10_mass, B0_mass) #  //Sigma_10_lam+B   #^{\lambda}
+            decPr_name = (r"$\Sigma_{10} B$", Sigma_10_mass, B0_mass) #  //Sigma_10_lam+B   #^{\lambda}
         elif(decPr==28 and baryon=='cascades_anti3'):
-            decPr_name = ("$\Lambda_{8}^{*} B$",  Lambda_star_mass, B0_mass) # //Lambda*_8_rho D #,\\rho
+            decPr_name = (r"$\Lambda_{8}^{*} B$",  Lambda_star_mass, B0_mass) # //Lambda*_8_rho D #,\\rho
             
     elif(baryon==3 or baryon=='sigmas'):
         baryon_name = 'sigma'
         if(decPr==1):
-            decPr_name = ("$\Sigma_{b} \pi$",  sigma_mass, pion_mass)
+            decPr_name = (r"$\Sigma_{c} \pi$",  sigma_mass, pion_mass)
         elif(decPr==2):
-            decPr_name = ("$\Sigma^{*}_{b} \pi$", sigma_s_mass, pion_mass)                 
+            decPr_name = (r"$\Sigma^{*}_{c} \pi$", sigma_s_mass, pion_mass)                 
         elif(decPr==3):
-            decPr_name = ("$\Lambda_{b} \pi$", lambda_mass, pion_mass)                 
+            decPr_name = (r"$\Lambda_{c} \pi$", lambda_mass, pion_mass)                 
         elif(decPr==4):
-            decPr_name = ("$\Sigma_{b} \eta$", sigma_mass, eta_mass)                  
+            decPr_name = (r"$\Sigma_{c} \eta$", sigma_mass, eta_mass)                  
         elif(decPr==5):
-            decPr_name = ("$\Xi_{b} K$", xi_mass, kaon_mass)
+            decPr_name = (r"$\Xi_{c} K$", xi_mass, kaon_mass)
         elif(decPr==6):
-            decPr_name = ("$\Sigma_{b}\\rho$",  sigma_mass, meson_rho_mass)         
+            decPr_name = (r"$\Sigma_{c}\\rho$",  sigma_mass, meson_rho_mass)         
         elif(decPr==7):                                                                             
-            decPr_name = ("$\Sigma^{*}_{b}\\rho$", sigma_s_mass, meson_rho_mass)       
+            decPr_name = (r"$\Sigma^{*}_{c}\\rho$", sigma_s_mass, meson_rho_mass)       
         elif(decPr==8):                                                                             
-            decPr_name = ("$\Lambda_{b}\\rho$", lambda_mass, meson_rho_mass)        
+            decPr_name = (r"$\Lambda_{c}\\rho$", lambda_mass, meson_rho_mass)        
         elif(decPr==9):                                                                             
-            decPr_name = ("$\Sigma^{*}_{b}\eta$", sigma_s_mass, eta_mass)             
+            decPr_name = (r"$\Sigma^{*}_{c}\eta$", sigma_s_mass, eta_mass)             
         elif(decPr==10):                                                                            
-            decPr_name = ("$\Sigma_{b}\eta'$", sigma_mass, eta_p_mass)             
+            decPr_name = (r"$\Sigma_{c}\eta'$", sigma_mass, eta_p_mass)             
         elif(decPr==11):                                                                            
-            decPr_name = ("$\Sigma^{*}_{b}\eta'$",  sigma_s_mass, eta_p_mass)           
+            decPr_name = (r"$\Sigma^{*}_{c}\eta'$",  sigma_s_mass, eta_p_mass)           
         elif(decPr==12):                                                                            
-            decPr_name = ("$\Xi'_{b}K$", xi_p_mass, kaon_mass)               
+            decPr_name = (r"$\Xi'_{c}K$", xi_p_mass, kaon_mass)               
         elif(decPr==13):                                                                            
-            decPr_name = ("$\Xi^{*}_{b}K$", xi_s_mass, kaon_mass)               
+            decPr_name = (r"$\Xi^{*}_{c}K$", xi_s_mass, kaon_mass)               
         elif(decPr==14):                                                                            
-            decPr_name = ("$\Xi_{b} K^{*}$", xi_mass, kaon_s_mass)               
+            decPr_name = (r"$\Xi_{c} K^{*}$", xi_mass, kaon_s_mass)               
         elif(decPr==15):                                                                            
-            decPr_name = ("$\Xi'_{b} K^{*}$",  xi_p_mass, kaon_s_mass)             
+            decPr_name = (r"$\Xi'_{c} K^{*}$",  xi_p_mass, kaon_s_mass)             
         elif(decPr==16):                                                                            
-            decPr_name = ("$\Xi^{*}_{b} K^{*}$",  xi_s_mass, kaon_s_mass)             
+            decPr_name = (r"$\Xi^{*}_{c} K^{*}$",  xi_s_mass, kaon_s_mass)             
         elif(decPr==17):                                                                            
-            decPr_name = ("$\Sigma_{b}\omega$", sigma_mass, small_omega_mass)       
+            decPr_name = (r"$\Sigma_{c}\omega$", sigma_mass, small_omega_mass)       
         elif(decPr==18):                                                                            
-            decPr_name = ("$\Sigma^{*}_{b}\omega$", sigma_s_mass, small_omega_mass)     
+            decPr_name = (r"$\Sigma^{*}_{c}\omega$", sigma_s_mass, small_omega_mass)     
         elif(decPr==19):                                                                            
-            decPr_name = ("$N B$", proton_mass, B0_mass) #  //N+B                  #^{\lambda}
+            decPr_name = (r"$N B$", proton_mass, B0_mass) #  //N+B                  #^{\lambda}
         elif(decPr==20):                                                                            
-            decPr_name = ("$\Sigma_{8} B_{s}$", Sigma_8_mass, Bs_mass) # //Sigma_8+Bs           # ^{\lambda}
+            decPr_name = (r"$\Sigma_{8} B_{s}$", Sigma_8_mass, Bs_mass) # //Sigma_8+Bs           # ^{\lambda}
         elif(decPr==21):                                                                            
-            decPr_name = ("$N B^{*}$", proton_mass, B_star_mass) # //N+B*                #^{\lambda}
+            decPr_name = (r"$N B^{*}$", proton_mass, B_star_mass) # //N+B*                #^{\lambda}
         elif(decPr==22):                                                                            
-            decPr_name = ("$\Delta B$", Delta_mass, B0_mass) #  //Delta+B        
+            decPr_name = (r"$\Delta B$", Delta_mass, B0_mass) #  //Delta+B        
         elif(decPr==23):                                                                            
-            decPr_name = ("$N^{*}_{1} B$", N_star_1520_mass, B0_mass) # //N*(1520)+B     # (1520,\lambda
+            decPr_name = (r"$N^{*}_{1} B$", N_star_1520_mass, B0_mass) # //N*(1520)+B     # (1520,\lambda
         elif(decPr==24):                                                                              
-            decPr_name = ("$N^{*}_{2} B$", N_star_1535_mass, B0_mass) #  //N*(1535)+     # (1535,\lambda
+            decPr_name = (r"$N^{*}_{2} B$", N_star_1535_mass, B0_mass) #  //N*(1535)+     # (1535,\lambda
         elif(decPr==25):                                                                              
-            decPr_name = ("$N^{*}_{3} B$", N_star_1680_mass, B0_mass) # //N*(1680)+B      # (1680,\lambda
+            decPr_name = (r"$N^{*}_{3} B$", N_star_1680_mass, B0_mass) # //N*(1680)+B      # (1680,\lambda
         elif(decPr==26):                                                                             
-            decPr_name = ("$N^{*}_{4} B$", N_star_1720_mass, B0_mass) # //N*(1720)+B     # (1720,\lambda)
+            decPr_name = (r"$N^{*}_{4} B$", N_star_1720_mass, B0_mass) # //N*(1720)+B     # (1720,\lambda)
             
     elif(baryon==4 or baryon=='lambdas'):
         baryon_name = 'lamda'
         if(decPr==1):
-            decPr_name = ("$\Sigma_{b} \pi$", sigma_mass, pion_mass)        
+            decPr_name = (r"$\Sigma_{c} \pi$", sigma_mass, pion_mass)        
         elif(decPr==2):                                                                   
-            decPr_name = ("$\Sigma^{*}_{b} \pi$", sigma_s_mass, pion_mass)        
+            decPr_name = (r"$\Sigma^{*}_{c} \pi$", sigma_s_mass, pion_mass)        
         elif(decPr==3):                                                                   
-            decPr_name = ("$\Lambda_{b} \eta$", lambda_mass, eta_mass)         
+            decPr_name = (r"$\Lambda_{c} \eta$", lambda_mass, eta_mass)         
         elif(decPr==4):                                                                   
-            decPr_name = ("$\Sigma_{b}\\rho$", sigma_mass, meson_rho_mass)    
+            decPr_name = (r"$\Sigma_{c}\\rho$", sigma_mass, meson_rho_mass)    
         elif(decPr==5):                                                                   
-            decPr_name = ("$\Sigma_{b}^{*}\\rho$", sigma_s_mass, meson_rho_mass)  
+            decPr_name = (r"$\Sigma_{c}^{*}\\rho$", sigma_s_mass, meson_rho_mass)  
         elif(decPr==6):                                                                   
-            decPr_name = ("$\Lambda_{b}\eta'$", lambda_mass, eta_p_mass)       
+            decPr_name = (r"$\Lambda_{c}\eta'$", lambda_mass, eta_p_mass)       
         elif(decPr==7):                                                                   
-            decPr_name = ("$\Lambda_{b}\omega$", lambda_mass, small_omega_mass) 
+            decPr_name = (r"$\Lambda_{c}\omega$", lambda_mass, small_omega_mass) 
         elif(decPr==8):                                                                   
-            decPr_name = ("$\Xi_{b} K$", xi_mass, kaon_mass)            
+            decPr_name = (r"$\Xi_{c} K$", xi_mass, kaon_mass)            
         elif(decPr==9):                                                                   
-            decPr_name = ("$\Xi'_{b} K$", xi_p_mass, kaon_mass)          
+            decPr_name = (r"$\Xi'_{c} K$", xi_p_mass, kaon_mass)          
         elif(decPr==10):                                                                  
-            decPr_name = ("$\Xi^{*}_{b} K$", xi_s_mass, kaon_mass)          
+            decPr_name = (r"$\Xi^{*}_{c} K$", xi_s_mass, kaon_mass)          
         elif(decPr==11):                                                                  
-            decPr_name = ("$\Xi_{b} K^{*}$", xi_mass, kaon_s_mass)          
+            decPr_name = (r"$\Xi_{c} K^{*}$", xi_mass, kaon_s_mass)          
         elif(decPr==12):              
-            decPr_name = ("$\Xi'_{b} K^{*}$", xi_p_mass, kaon_s_mass)        
+            decPr_name = (r"$\Xi'_{c} K^{*}$", xi_p_mass, kaon_s_mass)        
         elif(decPr==13):
-            decPr_name = ("$\Xi^{*}_{b} K^{*}$", xi_s_mass, kaon_s_mass)        
+            decPr_name = (r"$\Xi^{*}_{c} K^{*}$", xi_s_mass, kaon_s_mass)        
         elif(decPr==14):
-            decPr_name = ("$N B$", proton_mass, B0_mass) #  //N+B  
+            decPr_name = (r"$N B$", proton_mass, B0_mass) #  //N+B  
         elif(decPr==15):
-            decPr_name = ("$N B^{*}$", proton_mass, B0_mass) #  //N+B  not 15 decays
+            decPr_name = (r"$N B^{*}$", proton_mass, B0_mass) #  //N+B  not 15 decays
     return decPr_name
 
 
@@ -519,15 +519,15 @@ def print_header_latex(name_header, name_states, f_out):
     for i in range(nNames-2):
         print("p{0.58cm}", end='',file=f_out)
         
-    print("p{0.75cm}} \hline \hline", file=f_out)
+    print(r"p{0.75cm}} \hline \hline", file=f_out)
     for i in range(nNames-1): print(name_header[i]," & ", end='',file=f_out)
-    print("\\\\", file=f_out)
+    print(r"\\\\", file=f_out)
     for i in range(nNames-1): print(name_states[i]," & ", end='',file=f_out)
-    print(name_states[nNames-1]," \\\\ \hline", file=f_out)
+    print(name_states[nNames-1], r" \\\\ \hline", file=f_out)
 
-def print_bottom_latex(baryons,f_decay):
-    print('\hline \hline', file=f_decay)
-    print('\end{tabular}', file=f_decay)
+def print_charm_latex(baryons,f_decay):
+    print(r'\hline \hline', file=f_decay)
+    print(r'\end{tabular}', file=f_decay)
     #print("\caption{Decay widths in MeV, for states: $", baryons,"$}",file=f_decay)
     #print("\label{tab:gordo}", file=f_decay)
 
@@ -577,15 +577,15 @@ def decay_masses(baryons, decPr):
 
 def baryon_symbol(baryons="omegas"):
     if baryons=="omegas":
-        return "\Omega"
+        return r"\Omega"
     elif baryons=="sigmas":
-        return "\Sigma"
+        return r"\Sigma"
     elif baryons=="lambdas":
-        return "\Lambda"
+        return r"\Lambda"
     elif baryons=="cascades":
-        return "\Xi'"
+        return r"\Xi'"
     else:
-        return "\Xi"
+        return r"\Xi"
 
 def baryon_quarks(baryons="omegas"):
     if baryons=="omegas":

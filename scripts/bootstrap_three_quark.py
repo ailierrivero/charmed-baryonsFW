@@ -106,7 +106,7 @@ rho_gk, rho_ba, rho_ea, rho_ga, rho_eb,rho_gb,rho_ge      = ([]),([]),([]),([]),
 # start bootstrap
 start = datetime.datetime.now()
 
-sigma_model = 15.42**2 # obtained with optimization (Li.Jin)
+sigma_model = 0.5*15.42**2 # obtained with optimization (Li.Jin)
 # gaussian pdf with the measured value and with experimental and model(sigma_model) uncertainties
 # Omega states
 gauss_2695 = sample_gauss(2695.20, np.power((1.70**2 + sigma_model), 0.5 ))  # all OK (corresponds to predicted 2702), PDG
@@ -140,9 +140,9 @@ gauss_2970 = sample_gauss(2968.6,  np.power((3.30**2 + sigma_model), 0.5 ))  # a
 
 # plug here the sigma_0 optimization lines from data_utils.py
 
-count = 1
+count = 0
 # construct the simulated sampling distribution (bootstrap technique)
-for i in range(10): # max 10000 with decays included, computationally expensive
+for i in range(n_events): # max 10000 with decays included, computationally expensive
     #if(states=='All'):
     exp_m = np.array([ # measured baryon masses
         # omegas
@@ -166,6 +166,11 @@ for i in range(10): # max 10000 with decays included, computationally expensive
     ])    
     # perform the parameter fitting (via minimizing squared distance)
     m = fit(least_squares)
+
+    if type(m.covariance) != type(None):
+        count += 1
+    else:
+        continue
 
     sampled_m1 = np.append(sampled_m1, m.values['m1'])
     sampled_m2 = np.append(sampled_m2, m.values['m2'])

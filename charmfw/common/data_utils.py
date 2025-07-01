@@ -196,29 +196,29 @@ def flavor_label(baryons='omegas'):
     
 def baryon_name(baryons):
     if baryons=='omegas':
-        return "$\Omega_{b}(ssb)$"
+        return "$\\Omega_{c}(ssc)$"
     elif baryons=='sigmas':
-        return "$\Sigma_{b}(nnb)$"
+        return "$\\Sigma_{c}(nnc)$"
     elif baryons=='cascades':
-        return "$\Xi'_{b}(snb)$"
+        return "$\\Xi'_{c}(snc)$"
     elif baryons=='cascades_anti3':
-        return "$\Xi_{b}(snb)$"
+        return "$\\Xi_{c}(snc)$"
     elif baryons=='lambdas':
-        return "$\Lambda_{b}(snb)$"
+        return "$\\Lambda_{c}(snc)$"
     else:
         return ''
 
 def baryon_name_plots(baryons):
     if baryons=='omegas':
-        return "$\Omega_{b}$"
+        return "$\\Omega_{c}$"
     elif baryons=='sigmas':
-        return "$\Sigma_{b}$"
+        return "$\\Sigma_{c}$"
     elif baryons=='cascades':
-        return "$\Xi'_{b}$"
+        return "$\\Xi'_{c}$"
     elif baryons=='cascades_anti3':
-        return "$\Xi_{b}$"
+        return "$\\Xi_{c}$"
     elif baryons=='lambdas':
-        return "$\Lambda_{b}$"
+        return "$\\Lambda_{c}$"
     else:
         return ''
 
@@ -231,11 +231,11 @@ def compare_mass_latex(value=-1):
 def name_quantum_state(baryons, J_tot, S_tot, L_tot, ModEx, SU_tot):
 
     if baryons=='omegas':
-        quarks = 'ssb'
+        quarks = 'ssc'
     elif baryons=='cascades' or baryons=='cascades_anti3':
-        quarks = 'snb'
+        quarks = 'snc'
     elif baryons=='lambdas' or baryons=='sigmas':
-        quarks = 'nnb'
+        quarks = 'nnc'
     else:
         quarks = 'x'
         
@@ -304,18 +304,18 @@ def name_quantum_state(baryons, J_tot, S_tot, L_tot, ModEx, SU_tot):
     else:
         flavour = 'x'
 
-    return  '$\\vert \,' +l_lam + '\,,\,' +l_rho + '\,,\,' + kappa_lam + '\,,\,'+kappa_rho +' \,\\rangle $ &'
+    return  '$\\vert \\,' +l_lam + '\\,,\\,' +l_rho + '\\,,\\,' + kappa_lam + '\\,,\\,'+kappa_rho +' \\,\\rangle $ &'
         
     # return '$\\vert '+ quarks +','+ j_name + ',' + s_name +',' + l_lam + ',' + l_rho + ',' + kappa + ',' + flavour +' \\rangle$ &'
 
 def name_quantum_state_di(baryons, J_tot, S_tot, L_tot, ModEx, SU_tot):
 
     if baryons=='omegas':
-        quarks = 'ssb'
+        quarks = 'ssc'
     elif baryons=='cascades' or baryons=='cascades_anti3':
-        quarks = 'snb'
+        quarks = 'snc'
     elif baryons=='lambdas' or baryons=='sigmas':
-        quarks = 'nnb'
+        quarks = 'nnc'
     else:
         quarks = 'x'
         
@@ -399,7 +399,7 @@ def name_quantum_state_di(baryons, J_tot, S_tot, L_tot, ModEx, SU_tot):
     if l_rho != '0' or kappa_rho != '0':
         return "$\\dagger\\dagger$ &"
     else:
-        return '$\\vert \,' + l_r + '\,,\,' + kappa_r +' \,\\rangle$ &'
+        return '$\\vert \\,' + l_r + '\\,,\\,' + kappa_r +' \\,\\rangle$ &'
         
     # return '$\\vert '+ quarks +','+ j_name + ',' + s_name +',' + l_lam + ',' + l_rho + ',' + kappa + ',' + flavour +' \\rangle$ &'
 
@@ -483,9 +483,9 @@ def exp_mass_width(baryons, J_tot, S_tot, L_tot, ModEx, SU_tot): # latex names
         if J_tot==1/2 and S_tot==1/2 and L_tot==0 and ModEx=='grd' and SU_tot==float(10/3):
             return '$5935.02\\pm 0.05$', '$<0.08$'
         elif J_tot==3/2 and S_tot==3/2 and L_tot==0 and ModEx=='grd' and SU_tot==float(10/3):
-            return '$5953.8\\pm 0.6$', '$0.90\pm 0.18$'
+            return '$5953.8\\pm 0.6$', '$0.90\\pm 0.18$'
         elif J_tot==5/2 and S_tot==3/2 and L_tot==1 and ModEx=='lam' and SU_tot==float(10/3):
-            return '$6227.9\\pm 1.6$', '$19.9\pm 2.6$'
+            return '$6227.9\\pm 1.6$', '$19.9\\pm 2.6$'
         else:
             return '$\\dagger$', '$\\dagger$'
     if baryons=='sigmas':

@@ -15,7 +15,7 @@ import datetime
 import pandas as pd
 # framework modules
 import charmfw.baryons.data_preparation as dp
-from charmfw.baryons.charm_diquark import BottomDiquark
+from charmfw.baryons.charm_diquark import CharmDiquark
 
 
 if len(sys.argv) <= 1:
@@ -130,7 +130,7 @@ gauss_6333 = sample_gauss(6333.0, np.power((0.00**2 + sigma_model), 0.5 ))  # al
 # for _ in range(10000): # max 10000 with decays included, computationally expensive
 
 count = 0
-while count < 10000: # max 10000 with decays included, computationally expensive
+while count < 1000: # max 10000 with decays included, computationally expensive
 
     if fit_type=="All" or fit_type=="trad":
         exp_m = np.array([ # measured baryon masses        
@@ -299,7 +299,7 @@ else:
     df.to_csv(workpath+"/batch_results_diquark/"+run_baryons+"/correlation/"+str(batch_number)+".csv", index=False)
 
 # calculate the results using bootstrap simulation above
-results = BottomDiquark(baryons=run_baryons, params=param, sampled=sampled, corr_mat=corr_mat_diquark, asymmetric=True, batch_number=batch_number, workpath=workpath)
+results = CharmDiquark(baryons=run_baryons, params=param, sampled=sampled, corr_mat=corr_mat_diquark, asymmetric=True, batch_number=batch_number, workpath=workpath)
 results.fetch_values()
 
 print('Getting paper results for:', run_baryons)
