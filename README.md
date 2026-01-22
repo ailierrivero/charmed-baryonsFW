@@ -7,7 +7,7 @@ Code to compute charmed baryon spectra and decay widths. A fit is performed to o
 To install the framework you need anaconda and git on a linux machine. In a terminal type:
 1. Clone the repository:
   ```
-  git clone git@github.com:Ailierrivero/charmed-baryonsFW.git
+  git clone git@github.com:ailierrivero/charmed-baryonsFW.git
   ```
 2. Access the code:
   ```
