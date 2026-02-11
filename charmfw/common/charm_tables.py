@@ -364,9 +364,11 @@ class CharmTables:
             charged_name = "_charged"
         
         df = pd.read_csv(self.m_workpath+'/tables/decays_indi_em_'+self.m_baryons+charged_name+'_summary.csv')
+        input()
         f_decay_indi = open(self.m_workpath+'/tables/decay_indi_em_err_'+ self.m_baryons + charged_name + '_paper.tex', "w")
 
-        n_decay_channels = int((len(df.columns)-9)/3)
+        #n_decay_channels = int((len(df.columns)-9)/3) #for sextet
+        n_decay_channels = int((len(df.columns)-8)/3) #for antitriplet
         baryons = self.m_baryons
 
         flavor = "$\\mathcal{F}={\\bf {6}}_{\\rm f}$ " # omegas, sigmas, cascades
@@ -411,6 +413,7 @@ class CharmTables:
             errors_up = []
             errors_dn = []
             for k in range(n_decay_channels):
+                print(k,i)
                 channel_widths.append(df['decay_'+str(k)][i])
                 errors_up.append(df['dec_up_'+str(k)][i])
                 errors_dn.append(df['dec_dn_'+str(k)][i])
